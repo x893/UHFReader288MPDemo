@@ -808,7 +808,7 @@ namespace UHFReader288MPDemo
             text_RDVersion.Text =
             TextBox_Serial.Text = "";
 
-            btIventoryG2.Text = "Start";
+            btIventoryG2.Text = "START";
             timer_answer.Enabled =
             panel1.Enabled =
             panel4.Enabled =
@@ -1147,7 +1147,7 @@ namespace UHFReader288MPDemo
                 return;
             }
 
-            if (btIventoryG2.Text == "Start")
+            if (btIventoryG2.Text == "START")
             {
                 if (rb_mix.Checked)
                 {
@@ -1202,8 +1202,9 @@ namespace UHFReader288MPDemo
                 targettimes = Convert.ToInt32(text_target.Text);
                 total_time = Environment.TickCount;
                 fIsInventoryScan = false;
-                btIventoryG2.BackColor = Color.Indigo;
-                btIventoryG2.Text = "Stop";
+                btIventoryG2.ForeColor = Color.White;
+                btIventoryG2.BackColor = Color.Red;
+                btIventoryG2.Text = "STOP";
                 Array.Clear(antlist, 0, 4);
                 if (check_ant1.Checked)
                 {
@@ -1245,8 +1246,9 @@ namespace UHFReader288MPDemo
             {
                 toStopThread = true;
                 btIventoryG2.Enabled = false;
+                btIventoryG2.ForeColor = Color.DarkBlue;
                 btIventoryG2.BackColor = Color.Transparent;
-                btIventoryG2.Text = "Stoping";
+                btIventoryG2.Text = "STOPING";
             }
         }
 
@@ -1471,7 +1473,7 @@ namespace UHFReader288MPDemo
                 if (fIsInventoryScan)
                 {
                     toStopThread = true;
-                    btIventoryG2.Text = "Start";
+                    btIventoryG2.Text = "START";
                     mythread.Abort();
                     timer_answer.Enabled = false;
                     fIsInventoryScan = false;
@@ -1595,8 +1597,9 @@ namespace UHFReader288MPDemo
             {
                 toStopThread = true;
                 btIventoryG2.Enabled = false;
+                btIventoryG2.ForeColor = Color.DarkBlue;
                 btIventoryG2.BackColor = Color.Transparent;
-                btIventoryG2.Text = "Start";
+                btIventoryG2.Text = "START";
             }
             if (fIsBuffScan)
             {
@@ -1614,17 +1617,26 @@ namespace UHFReader288MPDemo
             timer_RealTime.Enabled =
             pictureBox2.Visible = false;
 
-            btCheckEASAlarm.Text = "Detect";
+            btCheckEASAlarm.Text = "DETECT";
 
             btIventoryG2.Text =
             btStartBuff.Text =
-            btStartMactive.Text = "Start";
+            btInventory6B.Text =
+            btStartMactive.Text = "START";
 
+            btIventoryG2.ForeColor = Color.DarkBlue;
             btIventoryG2.BackColor = Color.Transparent;
+
+            btStartBuff.ForeColor = Color.DarkBlue;
             btStartBuff.BackColor = Color.Transparent;
+
+            btStartMactive.ForeColor = Color.DarkBlue;
             btStartMactive.BackColor = Color.Transparent;
+
+            btCheckEASAlarm.ForeColor = Color.DarkBlue;
             btCheckEASAlarm.BackColor = Color.Transparent;
-            btInventory6B.Text = "Start";
+
+            btInventory6B.ForeColor = Color.DarkBlue;
             btInventory6B.BackColor = Color.Transparent;
 
             if (comboBox_EPC.Text == "" && comboBox_EPC.Items.Count > 0)
@@ -2734,14 +2746,16 @@ namespace UHFReader288MPDemo
             if (!timer_EAS.Enabled)
             {
                 pictureBox2.Visible = false;
-                btCheckEASAlarm.Text = "Detect";
+                btCheckEASAlarm.Text = "DETECT";
+                btCheckEASAlarm.ForeColor = Color.DarkBlue;
                 btCheckEASAlarm.BackColor = Color.Transparent;
             }
             else
             {
                 fIsInventoryScan = false;
-                btCheckEASAlarm.Text = "Stop";
-                btCheckEASAlarm.BackColor = Color.Indigo;
+                btCheckEASAlarm.Text = "STOP";
+                btCheckEASAlarm.ForeColor = Color.White;
+                btCheckEASAlarm.BackColor = Color.Red;
             }
         }
 
@@ -2769,15 +2783,17 @@ namespace UHFReader288MPDemo
             Timer_Test_6B.Enabled = !Timer_Test_6B.Enabled;
             if (!Timer_Test_6B.Enabled)
             {
-                btInventory6B.Text = "Start";
+                btInventory6B.Text = "START";
+                btInventory6B.ForeColor = Color.DarkBlue; 
                 btInventory6B.BackColor = Color.Transparent;
             }
             else
             {
                 fisinventoryscan_6B = false;
                 ListView_ID_6B.Items.Clear();
-                btInventory6B.BackColor = Color.Indigo;
-                btInventory6B.Text = "Stop";
+                btInventory6B.ForeColor = Color.White;
+                btInventory6B.BackColor = Color.Red;
+                btInventory6B.Text = "STOP";
             }
         }
 
@@ -3666,7 +3682,7 @@ namespace UHFReader288MPDemo
 
         private void BtStartBuff_Click(object sender, EventArgs e)
         {
-            if (btStartBuff.Text == "Start")
+            if (btStartBuff.Text == "START")
             {
                 if (rb_bepc.Checked)
                     TIDFlag = 0;
@@ -3674,8 +3690,9 @@ namespace UHFReader288MPDemo
                     TIDFlag = 1;
                 total_time = Environment.TickCount;
                 total_tagnum = 0;
-                btStartBuff.BackColor = Color.Indigo;
-                btStartBuff.Text = "Stop";
+                btStartBuff.ForeColor = Color.White;
+                btStartBuff.BackColor = Color.Red;
+                btStartBuff.Text = "STOP";
                 toStopThread = false;
                 if (fIsBuffScan == false)
                 {
@@ -3686,11 +3703,14 @@ namespace UHFReader288MPDemo
             }
             else
             {
+                btStartBuff.ForeColor = Color.DarkBlue;
                 btStartBuff.BackColor = Color.Transparent;
-                btStartBuff.Text = "Start";
+                btStartBuff.Text = "START";
                 if (fIsBuffScan)
                 {
-                    toStopThread = true;//标志，接收数据线程判断stop为true，正常情况下会自动退出线程            
+                    // Flag, the thread that receives the data determines that stop is true,
+                    // and will automatically exit the thread under normal circumstances.
+                    toStopThread = true;
                     ReadThread.Abort();
                     fIsBuffScan = false;
                 }
@@ -4067,7 +4087,8 @@ namespace UHFReader288MPDemo
             timer_RealTime.Enabled = !timer_RealTime.Enabled;
             if (!timer_RealTime.Enabled)
             {
-                btStartMactive.Text = "Start";
+                btStartMactive.Text = "START";
+                btStartMactive.ForeColor = Color.DarkBlue;
                 btStartMactive.BackColor = Color.Transparent;
             }
             else
@@ -4077,9 +4098,10 @@ namespace UHFReader288MPDemo
                 lxLed_Mtag.Text = "0";
                 lxLed_Mtime.Text = "0";
                 dataGridView4.Rows.Clear();
-                btStartMactive.BackColor = Color.Indigo;
+                btStartMactive.Text = "STOP";
+                btStartMactive.ForeColor = Color.White;
+                btStartMactive.BackColor = Color.Red;
                 fIsInventoryScan = false;
-                btStartMactive.Text = "Stop";
             }
         }
 
@@ -7416,7 +7438,7 @@ namespace UHFReader288MPDemo
             // rb_fastid
             // 
             this.rb_fastid.AutoSize = true;
-            this.rb_fastid.Location = new System.Drawing.Point(123, 47);
+            this.rb_fastid.Location = new System.Drawing.Point(144, 47);
             this.rb_fastid.Name = "rb_fastid";
             this.rb_fastid.Size = new System.Drawing.Size(56, 17);
             this.rb_fastid.TabIndex = 4;
@@ -7451,7 +7473,7 @@ namespace UHFReader288MPDemo
             // 
             this.rb_epc.AutoSize = true;
             this.rb_epc.Checked = true;
-            this.rb_epc.Location = new System.Drawing.Point(123, 22);
+            this.rb_epc.Location = new System.Drawing.Point(144, 22);
             this.rb_epc.Name = "rb_epc";
             this.rb_epc.Size = new System.Drawing.Size(46, 17);
             this.rb_epc.TabIndex = 1;
@@ -7467,9 +7489,9 @@ namespace UHFReader288MPDemo
             this.btIventoryG2.ForeColor = System.Drawing.Color.DarkBlue;
             this.btIventoryG2.Location = new System.Drawing.Point(6, 22);
             this.btIventoryG2.Name = "btIventoryG2";
-            this.btIventoryG2.Size = new System.Drawing.Size(109, 43);
+            this.btIventoryG2.Size = new System.Drawing.Size(128, 43);
             this.btIventoryG2.TabIndex = 0;
-            this.btIventoryG2.Text = "Start";
+            this.btIventoryG2.Text = "START";
             this.btIventoryG2.UseVisualStyleBackColor = false;
             this.btIventoryG2.Click += new System.EventHandler(this.BtIventoryG2_Click);
             // 
@@ -7650,7 +7672,7 @@ namespace UHFReader288MPDemo
             this.btStartMactive.Name = "btStartMactive";
             this.btStartMactive.Size = new System.Drawing.Size(296, 43);
             this.btStartMactive.TabIndex = 0;
-            this.btStartMactive.Text = "Start";
+            this.btStartMactive.Text = "START";
             this.btStartMactive.UseVisualStyleBackColor = true;
             this.btStartMactive.Click += new System.EventHandler(this.BtStartMactive_Click);
             // 
@@ -7773,7 +7795,7 @@ namespace UHFReader288MPDemo
             this.btStartBuff.Name = "btStartBuff";
             this.btStartBuff.Size = new System.Drawing.Size(171, 43);
             this.btStartBuff.TabIndex = 0;
-            this.btStartBuff.Text = "Start";
+            this.btStartBuff.Text = "START";
             this.btStartBuff.UseVisualStyleBackColor = false;
             this.btStartBuff.Click += new System.EventHandler(this.BtStartBuff_Click);
             // 
@@ -8276,7 +8298,7 @@ namespace UHFReader288MPDemo
             this.btCheckEASAlarm.Name = "btCheckEASAlarm";
             this.btCheckEASAlarm.Size = new System.Drawing.Size(90, 25);
             this.btCheckEASAlarm.TabIndex = 13;
-            this.btCheckEASAlarm.Text = "Detect";
+            this.btCheckEASAlarm.Text = "DETECT";
             this.btCheckEASAlarm.UseVisualStyleBackColor = true;
             this.btCheckEASAlarm.Click += new System.EventHandler(this.BtCheckEASAlarm_Click);
             // 
@@ -9321,7 +9343,7 @@ namespace UHFReader288MPDemo
             this.btInventory6B.Name = "btInventory6B";
             this.btInventory6B.Size = new System.Drawing.Size(171, 43);
             this.btInventory6B.TabIndex = 0;
-            this.btInventory6B.Text = "Start";
+            this.btInventory6B.Text = "START";
             this.btInventory6B.UseVisualStyleBackColor = false;
             this.btInventory6B.Click += new System.EventHandler(this.BtInventory6B_Click);
             // 
@@ -9578,7 +9600,7 @@ namespace UHFReader288MPDemo
             this.btStop.Name = "btStop";
             this.btStop.Size = new System.Drawing.Size(92, 36);
             this.btStop.TabIndex = 3;
-            this.btStop.Text = "Stop";
+            this.btStop.Text = "STOP";
             this.btStop.UseVisualStyleBackColor = true;
             this.btStop.Click += new System.EventHandler(this.BtStop_Click);
             // 
