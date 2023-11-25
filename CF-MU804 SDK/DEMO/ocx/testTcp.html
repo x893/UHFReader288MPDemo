@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb_2312-80">
+<TITLE>Document Title</TITLE>
+</head>
+<body>
+
+<OBJECT
+          	id=TUHF2000 
+	  	codebase="UHF2000.ocx"
+		classid="clsid:FACF7D39-9E21-40F7-A30A-80BDE4558AE3"
+	  	width=0
+	  	height=0
+	  	align=center
+	  	hspace=0
+	  	vspace=0
+		>
+		</OBJECT>
+
+<script language="javascript"> 
+    var str;
+    function doopen() 
+    { 
+        var ipAddr = document.getElementById("SnIP").value;
+        var Port=document.getElementById("SnPort").value;
+        var sum = TUHF2000.RFID_TcpOpen(ipAddr,Port);
+        if(sum==0) 	
+        document.getElementById("Snr").innerText="Success";
+        else
+        document.getElementById("Snr").innerText="Failed";
+    } 
+    function doclose() 
+    { 
+        var sum = TUHF2000.RFID_TcpClose(); 	
+        if(sum==0) 	
+        document.getElementById("Snr").innerText="Success";
+        else
+        document.getElementById("Snr").innerText="Failed";
+    } 
+    function doquery() 
+    { 
+        var sum = TUHF2000.RFID_Inventory(4,0,0,0x80,0,10); 
+        if(sum=="") 
+        {	
+           document.getElementById("Snr").innerText="No tag";
+           document.getElementById("SnEPC").innerText=sum;
+        }
+        else
+        {
+           document.getElementById("Snr").innerText="Success";
+	   //此处只取第一张标签进行读写操作
+	         var EPC_Len=parseInt(sum.substr(0,2),16);
+           var EPC=sum.substr(2,EPC_Len*2);
+           document.getElementById("SnEPC").innerText=EPC;
+        } 
+    } 
+    function doRead() 
+    { 
+        var Temp=document.getElementById("SnEPC").value;
+        if(Temp=="") return;
+
+        var WordPtr=document.getElementById("SnWpt").value;
+        if(WordPtr=="") return;
+
+        var WordNum=document.getElementById("SnNum").value;
+        if(WordNum=="") return;
+
+        var EPC=Temp;
+        var Mem;
+        var t=document.getElementsByName("radiobutton");
+        for(var i=0;i<t.length;i++)
+        {
+            if(t[i].checked)
+            {
+		Mem=t[i].value;
+            }
+        }
+
+        var sum = TUHF2000.RFID_Read(EPC,WordPtr,WordNum,Mem); 	
+        if(sum=="") 
+        {	
+           document.getElementById("Snr").innerText="Failed";
+           document.getElementById("SnData").innerText=sum;
+        }
+        else
+        {
+           document.getElementById("Snr").innerText="Success";
+           document.getElementById("SnData").innerText=sum;
+        } 
+    }
+    function doWrite() 
+    { 
+        var Temp=document.getElementById("SnEPC").value;
+        if(Temp=="") return;
+
+        var WordPtr=document.getElementById("SnWpt").value;
+        if(WordPtr=="") return;
+
+        var WData=document.getElementById("SnData").value;
+        if(WData=="") return;
+
+        var EPC=Temp;
+        var Mem;
+        var t=document.getElementsByName("radiobutton");
+        for(var i=0;i<t.length;i++)
+        {
+            if(t[i].checked)
+            {
+		Mem=t[i].value;
+            }
+        }
+        var sum = TUHF2000.RFID_Write(EPC,WordPtr,Mem,WData); 	
+        if(sum!=0) 
+        {	
+           document.getElementById("Snr").innerText="Failed";
+        }
+        else
+        {
+           document.getElementById("Snr").innerText="Success";
+        } 
+    }
+
+</script> 
+
+<table border="1" width= "400 "> 
+<tr>
+<td colspan="4" style="text-align:center" >R2000 UHF Test
+</td>
+</tr>
+
+<tr>
+<td>Port：</td>
+<td><input type="text" style="width:80px;" name="SnPort" value="27011"></td>
+</tr> 
+
+<tr>
+<td>IP：</td>
+<td><input type="text" style="width:120px;" name="SnIP" value="192.168.0.250"></td>
+</tr> 
+
+<tr>
+<td>Communication：</td>
+<td><input type="button" value="Open" id="button1" onclick="doopen();"></input> </td>
+<td><input type="button" value="Close" id="button2" onclick="doclose();"></input></td>
+</tr>
+
+<tr>
+<td>Inventory：</td>
+<td><input type="button" value="Scan" id="button3" onclick="doquery();"></input></td>
+<td><input type="button" value=" Read " id="button4" onclick="doRead();"></input></td>
+<td><input type="button" value=" Write " id="button5" onclick="doWrite();"></input></td>
+</tr>
+
+<td colspan="4"><input name="radiobutton" type="radio" value="0">Password
+<input name="radiobutton" type="radio" value="1"> EPC
+<input name="radiobutton" type="radio" value="2">TID
+<input name="radiobutton" type="radio" value="3" checked> User</td>
+
+<tr>
+  <td>EPC:</td>
+  <td colspan="3"><input type="text"  style="width:280px;"  name="SnEPC"></td>
+</tr> 
+<tr>
+  <td>StartAddr:</td>
+  <td><input type="text" style="width:80px;" name="SnWpt" value="2"></td>
+  <td>Length:</td>
+  <td><input type="text" style="width:80px;" name="SnNum" value="6"></td>
+</tr> 
+<tr>
+  <td>Data:</td>
+  <td colspan="3"><input type="text"  style="width:280px;"  name="SnData"></td>
+</tr> 
+<tr>
+  <td>Info:</td>
+  <td colspan="3"><input type="text"  style="width:280px;"  name="Snr"></td>
+</tr> 
+
+</body>

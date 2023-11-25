@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=gb_2312-80">
+<TITLE>Document Title</TITLE>
+</head>
+<body>
+
+<OBJECT
+    id=TUHF2000 
+	  codebase="UHF2000.ocx"
+		classid="clsid:FACF7D39-9E21-40F7-A30A-80BDE4558AE3"
+	  	width=0
+	  	height=0
+	  	align=center
+	  	hspace=0
+	  	vspace=0
+		>
+		</OBJECT>
+
+<script language="javascript"> 
+    var str;
+    function doopen() 
+    { 
+        var Port = document.getElementById("sel").value;
+        var Baud=document.getElementById("sel2").value;
+        var sum = TUHF2000.RFID_ComOpen(Port,Baud);
+        if(sum==0) 	
+        document.getElementById("Snr").innerText="Success";
+        else
+        document.getElementById("Snr").innerText="Failed";
+    } 
+    function doclose() 
+    { 
+        var sum = TUHF2000.RFID_ComClose(); 	
+        if(sum==0) 	
+        document.getElementById("Snr").innerText="Success";
+        else
+        document.getElementById("Snr").innerText="Failed";
+    } 
+    function doquery() 
+    { 
+	      var session = document.getElementById("sel3").value;
+	      var QValue = document.getElementById("sel4").value;
+	      var scantid=0;
+	      var anteana;
+	      var t=document.getElementsByName("rbAnt");
+        for(var i=0;i<t.length;i++)
+        {
+            if(t[i].checked)
+            {
+							 anteana=t[i].value;
+            }
+        }
+        
+        var sum = TUHF2000.RFID_Inventory(QValue,session,scantid,anteana,0,10); 
+        if(sum=="") 
+        {	
+           document.getElementById("Snr").innerText="No Tag";
+           document.getElementById("SnEPC").innerText=sum;
+        }
+        else
+        {
+           document.getElementById("Snr").innerText="Success";
+	   //此处只取第一张标签进行读写操作
+	         var EPC_Len=parseInt(sum.substr(0,2),16);
+           var EPC=sum.substr(2,EPC_Len*2);
+           document.getElementById("SnEPC").innerText=EPC;
+        } 
+    } 
+    function doRead() 
+    {  
+        var Temp=document.getElementById("SnEPC").value;
+        if(Temp=="") return;
+
+        var WordPtr=document.getElementById("SnWpt").value;
+        if(WordPtr=="") return;
+
+        var WordNum=document.getElementById("SnNum").value;
+        if(WordNum=="") return;
+
+        var EPC=Temp;
+        var Mem;
+        var t=document.getElementsByName("radiobutton");
+        for(var i=0;i<t.length;i++)
+        {
+            if(t[i].checked)
+            {
+							 Mem=t[i].value;
+            }
+        }
+
+        var sum = TUHF2000.RFID_Read(EPC,WordPtr,WordNum,Mem); 	
+        if(sum=="") 
+        {	
+           document.getElementById("Snr").innerText="Failed";
+           document.getElementById("SnData").innerText=sum;
+        }
+        else
+        {
+           document.getElementById("Snr").innerText="Success";
+           document.getElementById("SnData").innerText=sum;
+        } 
+    }
+    function doWrite() 
+    { 
+        var Temp=document.getElementById("SnEPC").value;
+        if(Temp=="") return;
+
+        var WordPtr=document.getElementById("SnWpt").value;
+        if(WordPtr=="") return;
+
+        var WData=document.getElementById("SnData").value;
+        if(WData=="") return;
+
+        var EPC=Temp;
+        var Mem;
+        var t=document.getElementsByName("radiobutton");
+        for(var i=0;i<t.length;i++)
+        {
+            if(t[i].checked)
+            {
+		Mem=t[i].value;
+            }
+        }
+        var sum = TUHF2000.RFID_Write(EPC,WordPtr,Mem,WData); 	
+        if(sum!=0) 
+        {	
+        	
+           document.getElementById("Snr").innerText="Failed";
+        }
+        else
+        {
+           document.getElementById("Snr").innerText="success";
+        } 
+    }
+
+</script> 
+
+<table border="1" width= "400 "> 
+<tr>
+<td colspan="4" style="text-align:center" >R2000 UHF Test
+</td>
+</tr>
+
+<tr>
+<td>ComPort：</td>
+<td> 
+<select name="Combo1" id="sel">    
+ <option id="sel"value="1">COM1</option>      
+ <option id="sel"value="2">COM2</option>
+ <option id="sel"value="3">COM3</option>
+ <option id="sel"value="4">COM4</option>
+ <option id="sel"value="5">COM5</option>
+ <option id="sel"value="6">COM6</option>
+ <option id="sel"value="7">COM7</option>
+ <option id="sel"value="8">COM8</option>
+ <option id="sel"value="9">COM9</option>
+ <option id="sel"value="10">COM10</option>
+ <option id="sel"value="11">COM11</option>
+ <option id="sel"value="12">COM12</option>
+ <option id="sel"value="13">COM13</option>
+ <option id="sel"value="14">COM14</option>
+ <option id="sel"value="15">COM15</option>
+ <option id="sel"value="16">COM16</option>
+ <option id="sel"value="17">COM17</option>
+ <option id="sel"value="18">COM18</option>
+ <option id="sel"value="19">COM19</option>
+ <option id="sel"value="20">COM20</option>
+</select>
+</td>
+<td colspan="2">   </td>
+</tr> 
+
+<tr>
+<td>BaudRate：</td>
+<td><select name="Combo2" id="sel2">    
+ <option id="sel2"value="0">9600bps</option>      
+ <option id="sel2"value="1">19200bps</option>
+ <option id="sel2"value="2">38400bps</option>
+ <option id="sel2"value="5" selected = "selected">57600bps</option>
+ <option id="sel2"value="6">115200bps</option>
+</select> <td>
+<td colspan="2">   </td>
+</tr> 
+
+
+<tr>
+<td>Communication：</td>
+<td><input type="button" value="Open" id="button1" onclick="doopen();"></input> </td>
+<td><input type="button" value="Close" id="button2" onclick="doclose();"></input></td>
+</tr>
+
+
+<tr>
+<td>Session：</td>
+<td><select name="Combo_s" id="sel3">    
+ <option id="sel3"value="0">S0</option>      
+ <option id="sel3"value="1">S1</option>
+ <option id="sel3"value="2">S2</option>
+ <option id="sel3"value="3">S3</option>
+ <option id="sel3"value="255" selected = "selected">Auto</option>
+</select> <td>
+<td colspan="2">   </td>
+</tr> 
+
+
+<tr>
+<td>Q</td>
+<td><select name="Combo_Q" id="sel4">    
+ <option id="sel4"value="0">0</option>      
+ <option id="sel4"value="1">1</option>
+ <option id="sel4"value="2">2</option>
+ <option id="sel4"value="3">3</option>
+ <option id="sel4"value="4" selected = "selected">4</option>
+ <option id="sel4"value="5">5</option>
+ <option id="sel4"value="6">6</option>
+ <option id="sel4"value="7">7</option>
+ <option id="sel4"value="8">8</option>
+ <option id="sel4"value="9">9</option>
+ <option id="sel4"value="10">10</option>
+ <option id="sel4"value="11">11</option>
+ <option id="sel4"value="12">12</option>
+ <option id="sel4"value="13">13</option>
+ <option id="sel4"value="14">14</option>
+ <option id="sel4"value="15">15</option>
+</select> <td>
+<td colspan="2">   </td>
+</tr>
+
+
+<td colspan="4"><input name="rbAnt" type="radio" value="128" checked>ANT1
+<input name="rbAnt" type="radio" value="129"> ANT2
+<input name="rbAnt" type="radio" value="130">ANT3
+<input name="rbAnt" type="radio" value="131"> ANT4</td>
+
+				
+<tr>
+<td>Inventory：</td>
+<td><input type="button" value="Scan" id="button3" onclick="doquery();"></input></td>
+</tr>
+
+
+<tr>
+<td>Read/Write：</td>
+<td><input type="button" value=" Read " id="button4" onclick="doRead();"></input></td>
+<td><input type="button" value=" Write " id="button5" onclick="doWrite();"></input></td>
+</tr>
+
+
+<td colspan="4"><input name="radiobutton" type="radio" value="0">Password
+<input name="radiobutton" type="radio" value="1"> EPC
+<input name="radiobutton" type="radio" value="2">TID
+<input name="radiobutton" type="radio" value="3" checked> User</td>
+
+
+<tr>
+  <td>EPC:</td>
+  <td colspan="3"><input type="text"  style="width:280px;"  name="SnEPC"></td>
+</tr> 
+
+
+<tr>
+  <td>StartAddr:</td>
+  <td><input type="text" style="width:80px;" name="SnWpt" value="2"></td>
+  <td>Number:</td>
+  <td><input type="text" style="width:80px;" name="SnNum" value="6"></td>
+</tr> 
+
+
+<tr>
+  <td>Data:</td>
+  <td colspan="3"><input type="text"  style="width:280px;"  name="SnData"></td>
+</tr> 
+
+
+<tr>
+  <td>Info:</td>
+  <td colspan="3"><input type="text"  style="width:280px;"  name="Snr"></td>
+</tr> 
+
+</body>
