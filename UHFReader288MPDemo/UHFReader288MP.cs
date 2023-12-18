@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
@@ -28,6 +29,7 @@ namespace UHFReader288MPDemo
         #endregion
 
         #region Variables
+        private CultureInfo cultureInfo = CultureInfo.InvariantCulture;
         private DeviceClass SelectedDevice;
         private byte fComAdr = 0xff;
         private int ferrorcode;
@@ -1506,9 +1508,9 @@ namespace UHFReader288MPDemo
             cmbReturnLossFreq.Items.Clear();
             for (int i = 0; i < 20; i++)
             {
-                ComboBox_dminfre.Items.Add(Convert.ToString(920.125 + i * 0.25) + " MHz");
-                ComboBox_dmaxfre.Items.Add(Convert.ToString(920.125 + i * 0.25) + " MHz");
-                cmbReturnLossFreq.Items.Add(Convert.ToString(920.125 + i * 0.25));
+                ComboBox_dminfre.Items.Add(Convert.ToString(920.125 + i * 0.25, cultureInfo) + " MHz");
+                ComboBox_dmaxfre.Items.Add(Convert.ToString(920.125 + i * 0.25, cultureInfo) + " MHz");
+                cmbReturnLossFreq.Items.Add(Convert.ToString(920.125 + i * 0.25, cultureInfo));
             }
             ComboBox_dmaxfre.SelectedIndex = 19;
             ComboBox_dminfre.SelectedIndex = 0;
@@ -1522,9 +1524,9 @@ namespace UHFReader288MPDemo
             cmbReturnLossFreq.Items.Clear();
             for (int i = 0; i < 50; i++)
             {
-                ComboBox_dminfre.Items.Add(Convert.ToString(902.75 + i * 0.5) + " MHz");
-                ComboBox_dmaxfre.Items.Add(Convert.ToString(902.75 + i * 0.5) + " MHz");
-                cmbReturnLossFreq.Items.Add(Convert.ToString(902.75 + i * 0.5));
+                ComboBox_dminfre.Items.Add(Convert.ToString(902.75 + i * 0.5, cultureInfo) + " MHz");
+                ComboBox_dmaxfre.Items.Add(Convert.ToString(902.75 + i * 0.5, cultureInfo) + " MHz");
+                cmbReturnLossFreq.Items.Add(Convert.ToString(902.75 + i * 0.5, cultureInfo));
             }
             ComboBox_dmaxfre.SelectedIndex = 49;
             ComboBox_dminfre.SelectedIndex = 0;
@@ -1538,9 +1540,9 @@ namespace UHFReader288MPDemo
             cmbReturnLossFreq.Items.Clear();
             for (int i = 0; i < 32; i++)
             {
-                ComboBox_dminfre.Items.Add(Convert.ToString(917.1 + i * 0.2) + " MHz");
-                ComboBox_dmaxfre.Items.Add(Convert.ToString(917.1 + i * 0.2) + " MHz");
-                cmbReturnLossFreq.Items.Add(Convert.ToString(917.1 + i * 0.2));
+                ComboBox_dminfre.Items.Add(Convert.ToString(917.1 + i * 0.2, cultureInfo) + " MHz");
+                ComboBox_dmaxfre.Items.Add(Convert.ToString(917.1 + i * 0.2, cultureInfo) + " MHz");
+                cmbReturnLossFreq.Items.Add(Convert.ToString(917.1 + i * 0.2, cultureInfo));
             }
             ComboBox_dmaxfre.SelectedIndex = 31;
             ComboBox_dminfre.SelectedIndex = 0;
@@ -1554,9 +1556,9 @@ namespace UHFReader288MPDemo
             cmbReturnLossFreq.Items.Clear();
             for (int i = 0; i < 15; i++)
             {
-                ComboBox_dminfre.Items.Add(Convert.ToString(865.1 + i * 0.2) + " MHz");
-                ComboBox_dmaxfre.Items.Add(Convert.ToString(865.1 + i * 0.2) + " MHz");
-                cmbReturnLossFreq.Items.Add(Convert.ToString(865.1 + i * 0.2));
+                ComboBox_dminfre.Items.Add(Convert.ToString(865.1 + i * 0.2, cultureInfo) + " MHz");
+                ComboBox_dmaxfre.Items.Add(Convert.ToString(865.1 + i * 0.2, cultureInfo) + " MHz");
+                cmbReturnLossFreq.Items.Add(Convert.ToString(865.1 + i * 0.2, cultureInfo));
             }
             ComboBox_dmaxfre.SelectedIndex = 14;
             ComboBox_dminfre.SelectedIndex = 0;
@@ -2784,7 +2786,7 @@ namespace UHFReader288MPDemo
             if (!Timer_Test_6B.Enabled)
             {
                 btInventory6B.Text = "START";
-                btInventory6B.ForeColor = Color.DarkBlue; 
+                btInventory6B.ForeColor = Color.DarkBlue;
                 btInventory6B.BackColor = Color.Transparent;
             }
             else
@@ -4201,9 +4203,9 @@ namespace UHFReader288MPDemo
             cmbReturnLossFreq.Items.Clear();
             for (int i = 0; i < 20; i++)
             {
-                ComboBox_dminfre.Items.Add(Convert.ToString(840.125 + i * 0.25) + " MHz");
-                ComboBox_dmaxfre.Items.Add(Convert.ToString(840.125 + i * 0.25) + " MHz");
-                cmbReturnLossFreq.Items.Add(Convert.ToString(840.125 + i * 0.25));
+                ComboBox_dminfre.Items.Add(Convert.ToString(840.125 + i * 0.25, cultureInfo) + " MHz");
+                ComboBox_dmaxfre.Items.Add(Convert.ToString(840.125 + i * 0.25, cultureInfo) + " MHz");
+                cmbReturnLossFreq.Items.Add(Convert.ToString(840.125 + i * 0.25, cultureInfo));
             }
             ComboBox_dmaxfre.SelectedIndex = 19;
             ComboBox_dminfre.SelectedIndex = 0;
@@ -4429,9 +4431,9 @@ namespace UHFReader288MPDemo
             cmbReturnLossFreq.Items.Clear();
             for (i = 0; i < 53; i++)
             {
-                ComboBox_dminfre.Items.Add(Convert.ToString(902 + i * 0.5) + " MHz");
-                ComboBox_dmaxfre.Items.Add(Convert.ToString(902 + i * 0.5) + " MHz");
-                cmbReturnLossFreq.Items.Add(Convert.ToString(902 + i * 0.5));
+                ComboBox_dminfre.Items.Add(Convert.ToString(902 + i * 0.5, cultureInfo) + " MHz");
+                ComboBox_dmaxfre.Items.Add(Convert.ToString(902 + i * 0.5, cultureInfo) + " MHz");
+                cmbReturnLossFreq.Items.Add(Convert.ToString(902 + i * 0.5, cultureInfo));
             }
             ComboBox_dmaxfre.SelectedIndex = 52;
             ComboBox_dminfre.SelectedIndex = 0;
@@ -5130,9 +5132,9 @@ namespace UHFReader288MPDemo
             // 
             this.cmbReturnLossFreq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbReturnLossFreq.FormattingEnabled = true;
-            this.cmbReturnLossFreq.Location = new System.Drawing.Point(97, 20);
+            this.cmbReturnLossFreq.Location = new System.Drawing.Point(110, 20);
             this.cmbReturnLossFreq.Name = "cmbReturnLossFreq";
-            this.cmbReturnLossFreq.Size = new System.Drawing.Size(71, 21);
+            this.cmbReturnLossFreq.Size = new System.Drawing.Size(58, 21);
             this.cmbReturnLossFreq.TabIndex = 13;
             // 
             // label122
@@ -6413,7 +6415,7 @@ namespace UHFReader288MPDemo
             // 
             // btMSetParameter
             // 
-            this.btMSetParameter.Location = new System.Drawing.Point(928, 128);
+            this.btMSetParameter.Location = new System.Drawing.Point(928, 133);
             this.btMSetParameter.Name = "btMSetParameter";
             this.btMSetParameter.Size = new System.Drawing.Size(119, 36);
             this.btMSetParameter.TabIndex = 86;
@@ -6952,7 +6954,7 @@ namespace UHFReader288MPDemo
             // 
             // text_readLen
             // 
-            this.text_readLen.Location = new System.Drawing.Point(176, 48);
+            this.text_readLen.Location = new System.Drawing.Point(176, 46);
             this.text_readLen.MaxLength = 2;
             this.text_readLen.Name = "text_readLen";
             this.text_readLen.Size = new System.Drawing.Size(41, 20);
@@ -6971,7 +6973,7 @@ namespace UHFReader288MPDemo
             // 
             // text_readadr
             // 
-            this.text_readadr.Location = new System.Drawing.Point(176, 14);
+            this.text_readadr.Location = new System.Drawing.Point(176, 16);
             this.text_readadr.MaxLength = 4;
             this.text_readadr.Name = "text_readadr";
             this.text_readadr.Size = new System.Drawing.Size(41, 20);
@@ -6997,7 +6999,7 @@ namespace UHFReader288MPDemo
             "EPC",
             "TID",
             "User"});
-            this.com_MixMem.Location = new System.Drawing.Point(64, 13);
+            this.com_MixMem.Location = new System.Drawing.Point(64, 16);
             this.com_MixMem.Name = "com_MixMem";
             this.com_MixMem.Size = new System.Drawing.Size(66, 21);
             this.com_MixMem.TabIndex = 1;
@@ -7244,7 +7246,7 @@ namespace UHFReader288MPDemo
             // text_target
             // 
             this.text_target.ForeColor = System.Drawing.Color.Red;
-            this.text_target.Location = new System.Drawing.Point(55, 46);
+            this.text_target.Location = new System.Drawing.Point(55, 48);
             this.text_target.MaxLength = 2;
             this.text_target.Name = "text_target";
             this.text_target.Size = new System.Drawing.Size(43, 20);
@@ -7272,7 +7274,7 @@ namespace UHFReader288MPDemo
             this.com_Target.Items.AddRange(new object[] {
             "A",
             "B"});
-            this.com_Target.Location = new System.Drawing.Point(384, 15);
+            this.com_Target.Location = new System.Drawing.Point(380, 15);
             this.com_Target.Name = "com_Target";
             this.com_Target.Size = new System.Drawing.Size(51, 21);
             this.com_Target.TabIndex = 33;
@@ -7290,7 +7292,7 @@ namespace UHFReader288MPDemo
             // 
             this.com_scantime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.com_scantime.FormattingEnabled = true;
-            this.com_scantime.Location = new System.Drawing.Point(258, 15);
+            this.com_scantime.Location = new System.Drawing.Point(255, 15);
             this.com_scantime.Name = "com_scantime";
             this.com_scantime.Size = new System.Drawing.Size(77, 21);
             this.com_scantime.TabIndex = 31;
@@ -7314,7 +7316,7 @@ namespace UHFReader288MPDemo
             "2",
             "3",
             "AUTO"});
-            this.com_S.Location = new System.Drawing.Point(125, 21);
+            this.com_S.Location = new System.Drawing.Point(127, 17);
             this.com_S.Name = "com_S";
             this.com_S.Size = new System.Drawing.Size(59, 21);
             this.com_S.TabIndex = 29;
@@ -7323,7 +7325,7 @@ namespace UHFReader288MPDemo
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(71, 20);
+            this.label32.Location = new System.Drawing.Point(75, 20);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(50, 13);
             this.label32.TabIndex = 28;
@@ -7350,7 +7352,7 @@ namespace UHFReader288MPDemo
             "13",
             "14",
             "15"});
-            this.com_Q.Location = new System.Drawing.Point(18, 15);
+            this.com_Q.Location = new System.Drawing.Point(18, 17);
             this.com_Q.Name = "com_Q";
             this.com_Q.Size = new System.Drawing.Size(51, 21);
             this.com_Q.TabIndex = 27;
@@ -7636,11 +7638,11 @@ namespace UHFReader288MPDemo
             this.lxLed_Mtag.FocusedBorderColor = System.Drawing.Color.LightCoral;
             this.lxLed_Mtag.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lxLed_Mtag.HighlightOpaque = ((byte)(50));
-            this.lxLed_Mtag.Location = new System.Drawing.Point(22, 75);
+            this.lxLed_Mtag.Location = new System.Drawing.Point(22, 74);
             this.lxLed_Mtag.Name = "lxLed_Mtag";
             this.lxLed_Mtag.RoundCorner = true;
             this.lxLed_Mtag.ShowHighlight = true;
-            this.lxLed_Mtag.Size = new System.Drawing.Size(186, 50);
+            this.lxLed_Mtag.Size = new System.Drawing.Size(186, 51);
             this.lxLed_Mtag.TabIndex = 22;
             this.lxLed_Mtag.Text = "0";
             this.lxLed_Mtag.TextAlignment = UHFReader288MPDemo.LxLedControl.Alignment.Right;
@@ -7935,11 +7937,11 @@ namespace UHFReader288MPDemo
             this.lxLed_Btoltime.FocusedBorderColor = System.Drawing.Color.LightCoral;
             this.lxLed_Btoltime.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lxLed_Btoltime.HighlightOpaque = ((byte)(50));
-            this.lxLed_Btoltime.Location = new System.Drawing.Point(677, 148);
+            this.lxLed_Btoltime.Location = new System.Drawing.Point(677, 140);
             this.lxLed_Btoltime.Name = "lxLed_Btoltime";
             this.lxLed_Btoltime.RoundCorner = true;
             this.lxLed_Btoltime.ShowHighlight = true;
-            this.lxLed_Btoltime.Size = new System.Drawing.Size(172, 32);
+            this.lxLed_Btoltime.Size = new System.Drawing.Size(211, 41);
             this.lxLed_Btoltime.TabIndex = 32;
             this.lxLed_Btoltime.Text = "0";
             this.lxLed_Btoltime.TextAlignment = UHFReader288MPDemo.LxLedControl.Alignment.Right;
@@ -7959,7 +7961,7 @@ namespace UHFReader288MPDemo
             // 
             this.label91.AutoSize = true;
             this.label91.ForeColor = System.Drawing.Color.Teal;
-            this.label91.Location = new System.Drawing.Point(675, 127);
+            this.label91.Location = new System.Drawing.Point(675, 124);
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(75, 13);
             this.label91.TabIndex = 31;
@@ -7977,11 +7979,11 @@ namespace UHFReader288MPDemo
             this.lxLed_Btoltag.FocusedBorderColor = System.Drawing.Color.LightCoral;
             this.lxLed_Btoltag.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lxLed_Btoltag.HighlightOpaque = ((byte)(50));
-            this.lxLed_Btoltag.Location = new System.Drawing.Point(677, 74);
+            this.lxLed_Btoltag.Location = new System.Drawing.Point(677, 65);
             this.lxLed_Btoltag.Name = "lxLed_Btoltag";
             this.lxLed_Btoltag.RoundCorner = true;
             this.lxLed_Btoltag.ShowHighlight = true;
-            this.lxLed_Btoltag.Size = new System.Drawing.Size(172, 32);
+            this.lxLed_Btoltag.Size = new System.Drawing.Size(211, 41);
             this.lxLed_Btoltag.TabIndex = 30;
             this.lxLed_Btoltag.Text = "0";
             this.lxLed_Btoltag.TextAlignment = UHFReader288MPDemo.LxLedControl.Alignment.Right;
@@ -7991,7 +7993,7 @@ namespace UHFReader288MPDemo
             // 
             this.label92.AutoSize = true;
             this.label92.ForeColor = System.Drawing.Color.Teal;
-            this.label92.Location = new System.Drawing.Point(675, 54);
+            this.label92.Location = new System.Drawing.Point(675, 44);
             this.label92.Name = "label92";
             this.label92.Size = new System.Drawing.Size(72, 13);
             this.label92.TabIndex = 29;

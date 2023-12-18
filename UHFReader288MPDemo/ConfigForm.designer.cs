@@ -579,7 +579,7 @@
             this.terminalTB.Location = new System.Drawing.Point(153, 276);
             this.terminalTB.MaxLength = 32;
             this.terminalTB.Name = "terminalTB";
-            this.terminalTB.Size = new System.Drawing.Size(266, 20);
+            this.terminalTB.Size = new System.Drawing.Size(275, 20);
             this.terminalTB.TabIndex = 32;
             // 
             // timeServerTB
@@ -588,7 +588,7 @@
             this.timeServerTB.Location = new System.Drawing.Point(157, 167);
             this.timeServerTB.MaxLength = 32;
             this.timeServerTB.Name = "timeServerTB";
-            this.timeServerTB.Size = new System.Drawing.Size(266, 20);
+            this.timeServerTB.Size = new System.Drawing.Size(271, 20);
             this.timeServerTB.TabIndex = 31;
             // 
             // timeZoneCB
@@ -601,7 +601,7 @@
             "(GMT-05:00)Eastern Time (US & Canada)"});
             this.timeZoneCB.Location = new System.Drawing.Point(157, 107);
             this.timeZoneCB.Name = "timeZoneCB";
-            this.timeZoneCB.Size = new System.Drawing.Size(266, 21);
+            this.timeZoneCB.Size = new System.Drawing.Size(271, 21);
             this.timeZoneCB.TabIndex = 29;
             // 
             // nameTB
@@ -610,7 +610,7 @@
             this.nameTB.Location = new System.Drawing.Point(157, 40);
             this.nameTB.MaxLength = 32;
             this.nameTB.Name = "nameTB";
-            this.nameTB.Size = new System.Drawing.Size(266, 20);
+            this.nameTB.Size = new System.Drawing.Size(271, 20);
             this.nameTB.TabIndex = 28;
             // 
             // tabPage_Network
@@ -1361,7 +1361,7 @@
             // 
             this.comboBox_SerialChannel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_SerialChannel.FormattingEnabled = true;
-            this.comboBox_SerialChannel.Location = new System.Drawing.Point(125, 15);
+            this.comboBox_SerialChannel.Location = new System.Drawing.Point(136, 15);
             this.comboBox_SerialChannel.Name = "comboBox_SerialChannel";
             this.comboBox_SerialChannel.Size = new System.Drawing.Size(50, 21);
             this.comboBox_SerialChannel.TabIndex = 110;
@@ -1452,7 +1452,7 @@
             // lastTB
             // 
             this.lastTB.AccessibleName = "Byte2Packing";
-            this.lastTB.Location = new System.Drawing.Point(323, 34);
+            this.lastTB.Location = new System.Drawing.Point(323, 35);
             this.lastTB.Name = "lastTB";
             this.lastTB.Size = new System.Drawing.Size(32, 20);
             this.lastTB.TabIndex = 76;
@@ -1763,7 +1763,7 @@
             this.channelNameL1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.channelNameL1.Location = new System.Drawing.Point(53, 18);
             this.channelNameL1.Name = "channelNameL1";
-            this.channelNameL1.Size = new System.Drawing.Size(0, 12);
+            this.channelNameL1.Size = new System.Drawing.Size(0, 15);
             this.channelNameL1.TabIndex = 67;
             // 
             // tabPage_Connection
@@ -1829,7 +1829,7 @@
             this.channelNameL2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.channelNameL2.Location = new System.Drawing.Point(47, 20);
             this.channelNameL2.Name = "channelNameL2";
-            this.channelNameL2.Size = new System.Drawing.Size(0, 12);
+            this.channelNameL2.Size = new System.Drawing.Size(0, 15);
             this.channelNameL2.TabIndex = 84;
             // 
             // panel_TCP
@@ -2002,14 +2002,14 @@
             // inactivityNUD
             // 
             this.inactivityNUD.AccessibleName = "ConnTimeout_M";
-            this.inactivityNUD.Location = new System.Drawing.Point(116, 235);
+            this.inactivityNUD.Location = new System.Drawing.Point(104, 235);
             this.inactivityNUD.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.inactivityNUD.Name = "inactivityNUD";
-            this.inactivityNUD.Size = new System.Drawing.Size(27, 20);
+            this.inactivityNUD.Size = new System.Drawing.Size(39, 20);
             this.inactivityNUD.TabIndex = 107;
             // 
             // groupBox5
@@ -3370,7 +3370,7 @@
             this.channelNameL.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.channelNameL.Location = new System.Drawing.Point(50, 26);
             this.channelNameL.Name = "channelNameL";
-            this.channelNameL.Size = new System.Drawing.Size(0, 12);
+            this.channelNameL.Size = new System.Drawing.Size(0, 15);
             this.channelNameL.TabIndex = 105;
             // 
             // tabPage_Password
